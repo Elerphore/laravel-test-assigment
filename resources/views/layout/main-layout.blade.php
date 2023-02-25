@@ -9,6 +9,7 @@
 
     <style>
         body {
+            flex-wrap: wrap;
             display: flex;
             justify-content: center;
         }

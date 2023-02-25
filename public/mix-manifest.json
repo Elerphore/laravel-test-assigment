@@ -1,0 +1,13 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/js/dist/dist.js": "/js/dist/dist.js",
+    "/js/dist/json-formatter.cjs.js": "/js/dist/json-formatter.cjs.js",
+    "/js/dist/json-formatter.css": "/js/dist/json-formatter.css",
+    "/js/dist/json-formatter.esm.js": "/js/dist/json-formatter.esm.js",
+    "/js/dist/json-formatter.umd.js": "/js/dist/json-formatter.umd.js",
+    "/js/dist/mocks/less.d.ts": "/js/dist/mocks/less.d.ts",
+    "/js/dist/src/helpers.d.ts": "/js/dist/src/helpers.d.ts",
+    "/js/dist/src/index.d.ts": "/js/dist/src/index.d.ts",
+    "/js/dist/test/spec.d.ts": "/js/dist/test/spec.d.ts"
+}

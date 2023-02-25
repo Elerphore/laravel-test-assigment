@@ -9,5 +9,7 @@
     "/js/dist/mocks/less.d.ts": "/js/dist/mocks/less.d.ts",
     "/js/dist/src/helpers.d.ts": "/js/dist/src/helpers.d.ts",
     "/js/dist/src/index.d.ts": "/js/dist/src/index.d.ts",
-    "/js/dist/test/spec.d.ts": "/js/dist/test/spec.d.ts"
+    "/js/dist/test/spec.d.ts": "/js/dist/test/spec.d.ts",
+    "/img/left-arrow.png": "/img/left-arrow.png",
+    "/img/right-arrow.png": "/img/right-arrow.png"
 }

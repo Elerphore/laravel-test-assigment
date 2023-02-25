@@ -1,5 +1,8 @@
 @extends('layout/main-layout')
 
+@section('left-arrow-link', '/crud')
+@section('right-arrow-link', '/')
+
 @section('form')
 <form id="update-form">
     <div>

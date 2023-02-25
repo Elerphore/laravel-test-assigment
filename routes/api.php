@@ -1,14 +1,15 @@
 <?php
 
+use App\Models\Entity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->match(['GET', 'POST'], '/create', function (Request $request) {
-    $jsonEntity = $request->getContent();
+    $jsonEntity = json_decode($request->getContent())->data;
     $user_id = $request->user()->id;
 
-    $entity_id = Artisan::call('command:create', ['data' => $jsonEntity, 'user_id' => $user_id]);
+    $entity_id = Artisan::call('command:create', ['data' => json_encode($jsonEntity), 'user_id' => $user_id]);
 
     return json_encode(['entity_id' => $entity_id]);
 });
@@ -29,4 +30,11 @@ Route::middleware('auth:sanctum')->match(['GET', 'POST'], '/update', function (R
         ]);
 
     return json_encode(['entity_id' => $entity_id]);
+});
+
+Route::middleware('auth:sanctum')->match(['GET', 'POST'], '/receive', function (Request $request) {
+    $user_id = $request->user()->id;
+    $entities = Entity::where('user_id', $user_id)->get();
+
+    return json_encode(['entities' => $entities]);
 });

@@ -1,4 +1,8 @@
 @extends('layout/main-layout')
+
+@section('left-arrow-link', '/')
+@section('right-arrow-link', '/update')
+
 @section('form')
 
 <form id="crud-form">
@@ -10,7 +14,7 @@
     <button type="submit">Receiver entities</button>
 </form>
 
-<div style="width: 100%;display: none">
+<div id="entities-block" style="width: 100%;display: none">
     <h1 style="text-align: center">Entities</h1>
     <div id="entities"></div>
 </div>
@@ -19,26 +23,31 @@
 
 <script>
     const form = document.getElementById('crud-form')
+    const entitiesBlock = document.getElementById('entities-block')
 
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', async function (e) {
         e.preventDefault()
 
-        fetch('/api/create', {
+        const response = await fetch('/api/receive', {
             method: 'post',
-            body: JSON.stringify({
-                data: form.entity.value
-            }),
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + form.token.value
             }
         })
-    })
+        .then((response) => response.json())
 
-    // const myJSON = {ans: 42, zhopa: ["test", "blabla", "haha"], test: "kekos"};
-    //
-    // const formatter = new JSONFormatter(myJSON);
-    //
-    // document.body.appendChild(formatter.render());
+        entitiesBlock.style.display = "block"
+
+        const entities = response.entities
+
+        entities.forEach(item => {
+            const formatter = new JSONFormatter(JSON.parse(item.data));
+            const node = document.createElement("div")
+            node.appendChild(formatter.render())
+
+            entitiesBlock.appendChild(node)
+        })
+    })
 </script>
 @endsection

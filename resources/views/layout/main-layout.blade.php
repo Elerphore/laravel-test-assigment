@@ -12,6 +12,7 @@
             flex-wrap: wrap;
             display: flex;
             justify-content: center;
+            align-items: center;
         }
 
         form {
@@ -51,6 +52,26 @@
 
 </head>
 <body>
+
+    <a href="@yield('left-arrow-link')">
+        <img
+            style="margin-right: 30px"
+            width="32px"
+            height="32px"
+            src="{{ asset('/img/left-arrow.png') }}"
+            alt="left-arrow">
+    </a>
+
     @yield('form')
+
+    <a href="@yield('right-arrow-link')">
+        <img
+            style="margin-left: 30px"
+            width="32px"
+            height="32px"
+            src="{{ asset('/img/right-arrow.png') }}"
+            alt="right-arrow">
+    </a>
+
 </body>
 </html>

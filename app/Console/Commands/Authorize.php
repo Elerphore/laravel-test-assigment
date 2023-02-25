@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Models\User;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Hash;
 
 class Authorize extends Command
 {
@@ -14,6 +16,14 @@ class Authorize extends Command
 
     public function handle()
     {
-        $this->info($this->argument('login').':'.$this->argument('password'));
+        $user = User::where('name', $this->argument('login'))->first();
+        $validCredentials = Hash::check($this->argument('password'), $user->getAuthPassword());
+
+        if($user == null || !$validCredentials) {
+            $this->error("Unable to fund the user");
+        } else {
+            $token = $user->createToken('token-name', ['server:update'])->plainTextToken;
+            $this->info('token: '.$token);
+        }
     }
 }

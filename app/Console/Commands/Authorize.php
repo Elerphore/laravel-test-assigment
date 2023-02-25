@@ -17,13 +17,22 @@ class Authorize extends Command
     public function handle()
     {
         $user = User::where('name', $this->argument('login'))->first();
+
+        if($user == null) {
+            $this->error("Unable to find the user");
+            return;
+        }
+
         $validCredentials = Hash::check($this->argument('password'), $user->getAuthPassword());
 
-        if($user == null || !$validCredentials) {
-            $this->error("Unable to fund the user");
-        } else {
-            $token = $user->createToken('token-name', ['server:update'])->plainTextToken;
-            $this->info('token: '.$token);
+        if(!$validCredentials) {
+            $this->error("Incorrect password");
+            return;
         }
+
+        $token = $user->createToken('token-name', ['server:update'])->plainTextToken;
+        $this->info('token: '.$token);
+
+        return Command::SUCCESS;
     }
 }

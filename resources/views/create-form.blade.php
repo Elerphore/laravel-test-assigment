@@ -23,14 +23,13 @@
     form.addEventListener('submit', function (e) {
         e.preventDefault()
 
-        console.log("hello")
-
         fetch('/api/create', {
             method: 'post',
             body: JSON.stringify({
                 data: form.entity.value
             }),
             headers: {
+                "Accept": "application/json",
                 "Authorization": "Bearer " + form.token.value
             }
         })

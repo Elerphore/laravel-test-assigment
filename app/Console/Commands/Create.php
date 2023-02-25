@@ -8,14 +8,18 @@ use Illuminate\Console\Command;
 class Create extends Command
 {
     protected $signature = 'command:create
-                            {data : JSON ENTITY}';
+                            {data : JSON ENTITY}
+                            {user_id : User id}';
 
     protected $description = 'Serialize json to db entity.';
 
     public function handle()
     {
-        return Entity::create([
+        $entity = Entity::create([
             'data' => $this->argument('data'),
+            'user_id' => $this->argument('user_id'),
         ]);
+
+        return $entity->id;
     }
 }

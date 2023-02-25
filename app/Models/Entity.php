@@ -9,7 +9,10 @@ class Entity extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'data',
+        'user_id'
     ];
 }

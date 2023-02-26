@@ -6,13 +6,14 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->match(['GET', 'POST'], '/create', function (Request $request) {
+    $start_time = time();
+
     $jsonEntity = $request->data;
-
     $user_id = $request->user()->id;
-
     $entity_id = Artisan::call('command:create', ['data' => $jsonEntity, 'user_id' => $user_id]);
 
-    return json_encode(['entity_id' => $entity_id]);
+    $memory_mb = round((memory_get_usage() / 1024) / 1024, 3);
+    return json_encode(['entity_id' => $entity_id, 'memory' => $memory_mb, 'time' => time() - $start_time]);
 });
 
 Route::middleware('auth:sanctum')->match(['GET', 'POST'], '/update', function (Request $request) {

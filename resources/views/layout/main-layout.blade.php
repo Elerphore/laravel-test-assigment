@@ -35,7 +35,7 @@
             font-size: 16pt;
         }
 
-        input {
+        input, select {
             border: 1px solid deepskyblue;
             border-radius: 5px;
             outline: none;

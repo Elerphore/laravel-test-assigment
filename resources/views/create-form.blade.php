@@ -18,6 +18,14 @@
         <input id="entity" name="entity" type="text">
     </div>
 
+    <div>
+        <label for="requestType">Request type</label>
+        <select id="requestType" name="requestType">
+            <option selected value="POST">POST</option>
+            <option value="GET">GET</option>
+        </select>
+    </div>
+
     <button type="submit">Save</button>
 
     <div
@@ -44,19 +52,15 @@
     form.addEventListener('submit',  async (e) => {
         e.preventDefault()
 
-        console.warn(form.entity.value)
-
-        const response = await fetch('/api/create', {
-            method: 'post',
-            body: JSON.stringify({
-                data: JSON.parse(form.entity.value)
-            }),
+        const response = await fetch(`/api/create?data=${JSON.stringify(JSON.parse(form.entity.value))}`, {
+            method: `${form.requestType.value}`,
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + form.token.value
-            }
+            },
         })
         .then(response => response.json())
+
 
         resultNode.style.display = "block"
         resultNode.innerText = JSON.stringify(response)

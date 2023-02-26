@@ -22,6 +22,14 @@
         <input id="executable" name="executable" type="text">
     </div>
 
+    <div>
+        <label for="requestType">Request type</label>
+        <select id="requestType" name="requestType">
+            <option selected value="POST">POST</option>
+            <option value="GET">GET</option>
+        </select>
+    </div>
+
     <button type="submit">Update</button>
 
 </form>
@@ -32,12 +40,8 @@
     form.addEventListener('submit', function (e) {
         e.preventDefault()
 
-        fetch('/api/update', {
-            method: 'post',
-            body: JSON.stringify({
-                entity_id: form.entityId.value,
-                executable: form.executable.value
-            }),
+        fetch(`/api/update?entity_id=${form.entityId.value}&executable=${form.executable.value}`, {
+            method: `${form.requestType.value}`,
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + form.token.value

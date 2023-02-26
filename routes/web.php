@@ -1,15 +1,13 @@
 <?php
 
+use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
-Route::get('/crud', function () {
-    return view('crud');
-});
+Route::get('/', [ViewController::class, 'createView']);
+Route::get('/crud', [ViewController::class, 'crudView']);
+Route::get('/update', [ViewController::class, 'updateView']);
 
-Route::get('/', function () {
-    return view('create-form');
-});
-
-Route::get('/update', function () {
-    return view('update-form');
+Route::get('/logs', function () {
+    return Storage::disk('logs')->response('view.log');
 });

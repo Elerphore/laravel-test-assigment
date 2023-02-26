@@ -32,7 +32,7 @@
         e.preventDefault()
 
         const response = await fetch('/api/receive', {
-            method: 'post',
+            method: 'get',
             headers: {
                 "Accept": "application/json",
                 "Authorization": "Bearer " + form.token.value

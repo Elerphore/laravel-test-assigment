@@ -37,7 +37,7 @@
 <script>
     const form = document.getElementById('update-form')
 
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', (e) => {
         e.preventDefault()
 
         fetch(`/api/update?entity_id=${form.entityId.value}&executable=${form.executable.value}`, {

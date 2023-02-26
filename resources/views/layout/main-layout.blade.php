@@ -15,6 +15,10 @@
             align-items: center;
         }
 
+        h1 {
+            text-align: center;
+        }
+
         form {
             width: 40%;
             display: flex;
@@ -32,7 +36,7 @@
         }
 
         input {
-            border-color: deepskyblue;
+            border: 1px solid deepskyblue;
             border-radius: 5px;
             outline: none;
             box-shadow: none;
@@ -42,8 +46,8 @@
         button {
             color: white;
             box-shadow: none;
-            background: lightblue;
-            border-color: lightblue;
+            background: #0d1cf5;
+            border: 1px solid lightblue;
             border-radius: 5px;
             font-size: 16pt;
             padding: 10px 20px;
@@ -53,7 +57,7 @@
 </head>
 <body>
 
-    <a href="@yield('left-arrow-link')">
+    <a href="@yield('left-arrow-link')" style="align-self: start; margin-top: 100px">
         <img
             style="margin-right: 30px"
             width="32px"
@@ -64,7 +68,7 @@
 
     @yield('form')
 
-    <a href="@yield('right-arrow-link')">
+    <a href="@yield('right-arrow-link')" style="align-self: start; margin-top: 100px">
         <img
             style="margin-left: 30px"
             width="32px"

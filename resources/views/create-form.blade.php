@@ -5,6 +5,9 @@
 
 @section('form')
 <form id="create-form">
+
+    <h1>CREATE ENTITY</h1>
+
     <div>
         <label for="token">Token</label>
         <input id="token" name="token" type="text">

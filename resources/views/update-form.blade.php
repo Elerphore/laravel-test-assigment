@@ -5,6 +5,8 @@
 
 @section('form')
 <form id="update-form">
+    <h1>UPDATE ENTITY</h1>
+
     <div>
         <label for="token">Token</label>
         <input id="token" name="token" type="text">
@@ -20,7 +22,7 @@
         <input id="executable" name="executable" type="text">
     </div>
 
-    <button type="submit">Save</button>
+    <button type="submit">Update</button>
 
 </form>
 

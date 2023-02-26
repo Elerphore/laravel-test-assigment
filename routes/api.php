@@ -38,3 +38,13 @@ Route::middleware('auth:sanctum')->match(['GET', 'POST'], '/receive', function (
 
     return json_encode(['entities' => $entities]);
 });
+
+Route::middleware('auth:sanctum')->post('/delete/{id}', function (Int $id, Request $request) {
+    $user_id = $request->user()->id;
+    $entity = Entity::where('id', $id)->where('user_id', $user_id)->first();
+    $entity->delete();
+
+    $entities = Entity::where('user_id', $user_id)->get();
+
+    return json_encode(['entities' => $entities]);
+});

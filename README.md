@@ -20,6 +20,8 @@ http://luny-un.ru/update // crud entity view
 http://luny-un.ru/crud // crud view 
 ````
 
+In case if you're wondering how can you get the token, in that case you can reach my telegram bot I wrote for this thing: https://t.me/LARAVEL_TEST_ASSIGMENT_BOT
+
 # NGINX
 No need for you to deploy it, but still, here some nginx configs of mine.
 

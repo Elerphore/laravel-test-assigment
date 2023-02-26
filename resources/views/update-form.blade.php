@@ -19,7 +19,7 @@
 
     <div>
         <label for="executable">Code to execute</label>
-        <input id="executable" name="executable" type="text">
+        <textarea id="executable" name="executable" type="text"></textarea>
     </div>
 
     <div>

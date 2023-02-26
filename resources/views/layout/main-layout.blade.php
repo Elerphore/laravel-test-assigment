@@ -35,7 +35,7 @@
             font-size: 16pt;
         }
 
-        input, select {
+        input, select, textarea {
             border: 1px solid deepskyblue;
             border-radius: 5px;
             outline: none;

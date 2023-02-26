@@ -83,7 +83,7 @@
                         "Authorization": "Bearer " + form.token.value
                     }
                 })
-                    .then(response => response.json())
+                .then(response => response.json())
 
                 const entities = response.entities
 
